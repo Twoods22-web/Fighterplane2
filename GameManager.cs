@@ -1,8 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static System.Net.Mime.MediaTypeNames;
+using System.Numerics;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     public float verticalScreenSize;
 
     public int score;
+    public text scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void CreateEnemy()
@@ -46,15 +49,26 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize), Random.Range(-verticalScreenSize, verticalScreenSize), 0), Quaternion.identity);
         }
-        
+
+    }
+    //a function to print the score. Run this after collecting a coin
+    void PrintScore()
+    {
+        scoreText.text = "Score: " + score;
     }
     public void AddScore(int earnedScore)
     {
         score = score + earnedScore;
     }
 
-    public void ChangeLivesText (int currentLives)
+    public void ChangeLivesText(int currentLives)
     {
         livesText.text = "Lives: " + currentLives;
+    }
+
+    //a function to make the score increase every time the player is on a coin
+    public void IncreaseScore(int amount)
+    {
+
     }
 }
