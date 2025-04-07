@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         CreateSky();
         InvokeRepeating("CreateEnemy", 1, 3);
+        InvokeRepeating("CreatCoin", 6, 6); //Spawn Coin every 6 seconds after 6 seconds
     }
 
     // Update is called once per frame
@@ -51,6 +52,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    
+    void CreatCoin()
+    {
+        Instantiate(CoinPrefab, new Vector3(Randon.Range(1f, 5.5f), Random.Range(1f, 9f), Quaternion.identity);
+    }
+
     //a function to print the score. Run this after collecting a coin
     void PrintScore()
     {
@@ -72,3 +79,4 @@ public class GameManager : MonoBehaviour
 
     }
 }
+
